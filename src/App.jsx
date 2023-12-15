@@ -1,6 +1,9 @@
 import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { Navbar, Container, Row, Col } from 'react-bootstrap';
+
+import './main.css';
+
 import Form from './components/AddItem';
 import Items from './components/Items';
 
@@ -46,7 +49,7 @@ function App() {
 
   return (
     <>
-      <Navbar bg="dark" variant="dark">
+      <Navbar className="header">
         <Navbar.Brand href="#home">301 Final!</Navbar.Brand>
       </Navbar>
       <Container fluid>
@@ -62,6 +65,9 @@ function App() {
           </Col>
         </Row>
       </Container>
+      <footer className='footer'>
+        <h3>&copy; Ekow Inc</h3>
+      </footer>
     </>
   );
 }

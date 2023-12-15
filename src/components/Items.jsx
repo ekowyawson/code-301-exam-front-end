@@ -1,31 +1,29 @@
 // Items.jsx
 import React from 'react';
-import Table from 'react-bootstrap/Table';
-import Item from './Item'; // Import the new Item component
+import Accordion from 'react-bootstrap/Accordion';
+import Item from './Item';
 
 function Items({ itemsList, handleDelete }) { // Destructure props for cleaner access
 
   return (
-    <section>
+    <section style={{ marginTop: '20px' }}>
       <h2>Items...</h2>
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {itemsList.map(item => 
+      <Accordion className='itemsAccordion'>
+
+        {itemsList.map(item => (
+          <Accordion.Item
+            key={item._id}
+            eventKey={item._id}
+          >
             <Item
               key={item._id}
               itemData={item}
               handleDelete={handleDelete}
             />
-          )}
-        </tbody>
-      </Table>
+          </Accordion.Item>
+        ))}
+
+      </Accordion>
     </section>
   );
 }

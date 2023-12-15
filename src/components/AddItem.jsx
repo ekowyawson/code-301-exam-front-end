@@ -21,7 +21,7 @@ function AddItem({ handleAddItem }) { // Destructure props for cleaner access
 
   return (
     <Form data-testid="add-form" onSubmit={handleSubmit}>
-      <Card style={{ width: '18rem' }}>
+      <Card style={{ width: '18rem' }} >
         <Card.Header>Add Item</Card.Header>
         <Card.Body>
           <Form.Group>
@@ -46,7 +46,8 @@ function AddItem({ handleAddItem }) { // Destructure props for cleaner access
               onChange={handleChange}
             />
           </Form.Group>
-          <Button variant="primary" type="submit">Add Item</Button>
+          <br />
+          <Button className='submitBtn' type="submit">Add Item</Button>
         </Card.Body>
       </Card>
     </Form>

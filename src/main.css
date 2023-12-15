@@ -1,0 +1,110 @@
+/* styles.css */
+body {
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+}
+
+div h1,
+section h2 {
+    color: rgb(90, 85, 85);
+    text-shadow: 1px 1px 2px rgb(2, 47, 114);
+}
+
+/* NAVBAR / HEADER */
+
+.navbar {
+    background-color: #007bff;
+}
+
+nav.header {
+    padding: 20px;
+    background-color: #031633;
+    border: 1px solid #007bff;
+}
+
+.header a {
+    color: rgb(110, 168, 254);
+    font-size: 30px;
+    font-weight: 700;
+    font-family: 'Courier New', Courier, monospace;
+    transition: all .8s;
+}
+
+.header a:hover {
+    color: rgb(174, 205, 252);
+}
+
+/* CARDS & CONTAINERS */
+.container {
+    padding: 20px;
+}
+
+.card {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.form-control,
+.btn {
+    border-radius: 4px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-danger {
+    background-color: #300f12;
+}
+
+div.card-header {
+    background-color: rgb(3, 22, 51);
+    color: rgb(110, 168, 254);
+    border: 1px solid #007bff;
+    transition: all .5s;
+    cursor: cell;
+}
+
+div.card-header:hover {
+    background-color: #007bff;
+    color: aquamarine;
+}
+
+button.submitBtn {
+    color: rgb(3, 22, 51);
+    background-color: rgb(110, 168, 254);
+}
+
+button.submitBtn:hover {
+    color: rgb(110, 168, 254);
+    ;
+    background-color: rgb(3, 22, 51);
+}
+
+button.accordion-button {
+    border: 1px solid #007bff;
+    background-color: rgb(3, 22, 51);
+    color: rgb(110, 168, 254);
+}
+
+button.accordion-button:hover {
+    background-color: #007bff;
+    color: #7fffd4;
+}
+
+.content {
+    flex: 1 0 auto; /* Ensures that the content expands to fill available space */
+}
+
+.footer {
+    flex-shrink: 0; /* Prevents the footer from shrinking */
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #000000; /* Or any color of your choice */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
