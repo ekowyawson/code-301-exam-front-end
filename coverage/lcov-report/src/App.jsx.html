@@ -132,7 +132,22 @@
 <a name='L67'></a><a href='#L67'>67</a>
 <a name='L68'></a><a href='#L68'>68</a>
 <a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -142,7 +157,9 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
@@ -154,6 +171,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -179,6 +197,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -204,16 +232,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { Navbar, Container, Row, Col } from 'react-bootstrap';
-import Form from './components/AddItem';
+import './main.css';
+import AddItem from './components/AddItem';
 import Items from './components/Items';
 &nbsp;
-// Ensure this environment variable is set in your project settings
+// API SERVER URL FROM .env VARIABLE
 const API_SERVER = import.meta.env.VITE_APP_API;
 &nbsp;
 function App() {
+  // STORE ITEMS FETCHED FROM SERVER IN 'state'
   const [items, setItems] = useState([]);
 &nbsp;
-  // Fetch items from server
+  // AXIOS GET REQUEST: GET ALL ITEMS
+  // 'useCallback' FOR MEMOIZATION
   const getItems = useCallback(async () =&gt; {
     try {
       const response = await axios.get(`${API_SERVER}/items`);
@@ -223,25 +254,26 @@ function App() {
     }
   }, []);
 &nbsp;
+  // 'useEffect' HOOK TO LOAD ITEMS WHEN COMPONENT MOUNTS
   useEffect(() =&gt; {
     getItems();
   }, [getItems]);
 &nbsp;
-  // Add new item to server
+  // AXIOS POST REQUEST: add new item to the server
   const addItem = async (item) =&gt; {
     try {
       await axios.post(`${API_SERVER}/items`, item);
-      getItems();
+      getItems(); // Refresh items after adding
     } catch (error) {
 <span class="cstat-no" title="statement not covered" >      console.error("Error adding item:", error);</span>
     }
   };
 &nbsp;
-  // Delete item from server
+  // AXIOS DELETE REQUEST: delete an item from the server
   const deleteItem = async (itemId) =&gt; {
     try {
       await axios.delete(`${API_SERVER}/items/${itemId}`);
-      getItems();
+      getItems(); // Refresh items after deletion
     } catch (error) {
 <span class="cstat-no" title="statement not covered" >      console.error("Error deleting item:", error);</span>
     }
@@ -249,22 +281,32 @@ function App() {
 &nbsp;
   return (
     &lt;&gt;
-      &lt;Navbar bg="dark" variant="dark"&gt;
+      {/* NAVBAR */}
+      &lt;Navbar className="header"&gt;
         &lt;Navbar.Brand href="#home"&gt;301 Final!&lt;/Navbar.Brand&gt;
       &lt;/Navbar&gt;
+&nbsp;
+      {/* CONTAINER FOR ADDITEM &amp; ITEMS COMPONENTS */}
       &lt;Container fluid&gt;
         &lt;Row&gt;
-          &lt;Col&gt;&lt;h1&gt;Our Items&lt;/h1&gt;&lt;/Col&gt;
+          &lt;Col&gt;&lt;h1&gt;Our Todo Items&lt;/h1&gt;&lt;/Col&gt;
         &lt;/Row&gt;
         &lt;Row&gt;
+          {/* ADDITEM COMPONENT - Form */}
           &lt;Col md="auto"&gt;
-            &lt;Form handleAddItem={addItem} /&gt;
+            &lt;AddItem handleAddItem={addItem} /&gt;
           &lt;/Col&gt;
+          {/* ITEMS COMPONENT - Accordion */}
           &lt;Col&gt;
             &lt;Items itemsList={items} handleDelete={deleteItem} /&gt;
           &lt;/Col&gt;
         &lt;/Row&gt;
       &lt;/Container&gt;
+&nbsp;
+      {/* FOOTER */}
+      &lt;footer className='footer'&gt;
+        &lt;h3&gt;&amp;copy; Ekow Inc&lt;/h3&gt;
+      &lt;/footer&gt;
     &lt;/&gt;
   );
 }
@@ -277,7 +319,7 @@ export default App;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-12-15T02:04:00.683Z
+                at 2023-12-16T21:59:12.242Z
             </div>
         <script src="../prettify.js"></script>
         <script>

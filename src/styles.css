@@ -1,0 +1,109 @@
+/* General body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Header or title styling */
+.header {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+/* Container for the API Key and version */
+.api-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+/* Styling for the API key section */
+.api-key {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Version button styling */
+.version-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Deployed label styling */
+.deployed-label {
+    color: green;
+    font-weight: bold;
+}
+
+/* JSON container styling */
+.json-container {
+    background-color: #eaeaea;
+    border-radius: 4px;
+    padding: 15px;
+    font-family: 'Courier New', monospace;
+    margin: 20px 0;
+}
+
+/* Import section styling */
+.import-section {
+    background-color: #fff;
+    border: 1px dashed #ccc;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+/* Import button styling */
+.import-btn {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Cancel button styling */
+.cancel-btn {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Input file styling */
+.input-file {
+    border: 2px solid #ccc;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+
+    .api-container,
+    .import-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .version-btn {
+        margin-top: 10px;
+    }
+}

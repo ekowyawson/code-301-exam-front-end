@@ -1,22 +1,28 @@
-// AddNewItem.jsx
 import { useState } from 'react';
 import { Card, Form, Button } from 'react-bootstrap';
 
-function AddItem({ handleAddItem }) { // Destructure props for cleaner access
-
+// DESTRUCTURE PROPS FOR CLEANER ACCESS
+function AddItem({ handleAddItem }) {
   const [formData, setFormData] = useState({ name: '', description: '' });
 
+  // ADD FORM DATA ON CHANGE AND SET IN STATE
   function handleChange(event) {
-    const { name, value } = event.target; // Destructuring for cleaner code
+    // Destructuring for cleaner code
+    const { name, value } = event.target;
     setFormData(prevFormData => (
       { ...prevFormData, [name]: value }
     ));
+
+    console.log({[name]: value});
   }
 
+  // FUNCTION TO RUN 'handleAddItem' PROP ON SUBMIT EVENT
+  // 'handleAddItem' FUNCTION IS DEFINED IN App.js
   function handleSubmit(event) {
     event.preventDefault();
     handleAddItem(formData);
-    setFormData({ name: '', description: '' }); // Reset the form after submission
+    // Reset the form after submission
+    setFormData({ name: '', description: '' });
   }
 
   return (

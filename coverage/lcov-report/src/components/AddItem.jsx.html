@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>8/8</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>8/8</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
@@ -119,8 +119,14 @@
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
 <a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -128,15 +134,22 @@
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -175,30 +188,37 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// AddNewItem.jsx
-import { useState } from 'react';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useState } from 'react';
 import { Card, Form, Button } from 'react-bootstrap';
 &nbsp;
-function AddItem({ handleAddItem }) { // Destructure props for cleaner access
-&nbsp;
+// DESTRUCTURE PROPS FOR CLEANER ACCESS
+function AddItem({ handleAddItem }) {
   const [formData, setFormData] = useState({ name: '', description: '' });
 &nbsp;
+  // ADD FORM DATA ON CHANGE AND SET IN STATE
   function handleChange(event) {
-    const { name, value } = event.target; // Destructuring for cleaner code
+    // Destructuring for cleaner code
+    const { name, value } = event.target;
     setFormData(prevFormData =&gt; (
       { ...prevFormData, [name]: value }
     ));
+&nbsp;
+    console.log({[name]: value});
   }
 &nbsp;
+  // FUNCTION TO RUN 'handleAddItem' PROP ON SUBMIT EVENT
+  // 'handleAddItem' FUNCTION IS DEFINED IN App.js
   function handleSubmit(event) {
     event.preventDefault();
     handleAddItem(formData);
-    setFormData({ name: '', description: '' }); // Reset the form after submission
+    // Reset the form after submission
+    setFormData({ name: '', description: '' });
   }
 &nbsp;
   return (
     &lt;Form data-testid="add-form" onSubmit={handleSubmit}&gt;
-      &lt;Card style={{ width: '18rem' }}&gt;
+      &lt;Card style={{ width: '18rem' }} &gt;
         &lt;Card.Header&gt;Add Item&lt;/Card.Header&gt;
         &lt;Card.Body&gt;
           &lt;Form.Group&gt;
@@ -223,7 +243,8 @@ function AddItem({ handleAddItem }) { // Destructure props for cleaner access
               onChange={handleChange}
             /&gt;
           &lt;/Form.Group&gt;
-          &lt;Button variant="primary" type="submit"&gt;Add Item&lt;/Button&gt;
+          &lt;br /&gt;
+          &lt;Button className='submitBtn' type="submit"&gt;Add Item&lt;/Button&gt;
         &lt;/Card.Body&gt;
       &lt;/Card&gt;
     &lt;/Form&gt;
@@ -238,7 +259,7 @@ export default AddItem;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-12-15T02:04:00.683Z
+                at 2023-12-16T21:59:12.242Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
